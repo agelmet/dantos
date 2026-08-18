@@ -1,0 +1,1008 @@
+<!doctype html>
+<!--
+  ============================================================================
+  DANTOS — Σίδερα & Οικοδομικά Υλικά, Μύκονος
+  Advon Media · build 2026-08-18
+
+  SKELETON ROLL (structural divergence — see advon-client-site SKILL.md):
+    Hero          : stacked editorial
+    Nav           : centered logo split-nav
+    Services      : numbered editorial list
+    Social proof  : floating chips
+    Contact       : full-width band
+    FAQ           : SPLIT — top 3 inline inside services, remaining 5 in a
+                    full block before contact
+
+  INDEXING STATE: **PREVIEW** (noindex,nofollow · robots.txt Disallow)
+    No domain assigned yet, so canonical + hreflang are deliberately OMITTED
+    (never point a canonical at the Pages URL). sitemap.xml carries a
+    placeholder final-domain URL — replace before go-live.
+    Go live with: "take DANTOS live on <domain>"
+
+  EDITABLE BUSINESS DATA: single CFG object at the top of the <script> block.
+  ============================================================================
+-->
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0B0C0E">
+
+<!-- PREVIEW STATE — remove this line at go-live -->
+<meta name="robots" content="noindex,nofollow">
+
+<title>Σίδερα &amp; Οικοδομικά Υλικά Μύκονος | DANTOS Σιδηρεμπόριο</title>
+<meta name="description" content="Σιδηρεμπόριο στη Μύκονο. Μπετόβεργα Β500C, δομικά πλέγματα, κοιλοδοκοί, τσιμέντο και μεταλλικές κατασκευές. Απόθεμα στο νησί, παράδοση στο εργοτάξιο.">
+<meta name="author" content="DANTOS">
+<meta name="geo.region" content="GR-82">
+<meta name="geo.placename" content="Μύκονος">
+
+<!-- canonical + hreflang: intentionally omitted until the real domain exists -->
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DANTOS">
+<meta property="og:locale" content="el_GR">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:title" content="Σίδερα &amp; Οικοδομικά Υλικά Μύκονος | DANTOS Σιδηρεμπόριο">
+<meta property="og:description" content="Σιδηρεμπόριο στη Μύκονο. Μπετόβεργα Β500C, πλέγματα, δομικά υλικά και μεταλλικές κατασκευές, με απόθεμα στο νησί.">
+<meta property="og:image" content="assets/og.svg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap">
+
+<style>
+/* ---- tokens ------------------------------------------------------------ */
+:root{
+  --bg:#0B0C0E; --surface:#14171C; --surface-2:#1B1F25;
+  --ink:#F5F2EC; --ink-2:rgba(245,242,236,.66); --ink-3:rgba(245,242,236,.42);
+  --accent:#B8905A; --accent-soft:#D7B37A;
+  --line:rgba(245,242,236,.13); --line-2:rgba(184,144,90,.34);
+  --ff-d:"Cormorant Garamond",Georgia,serif;
+  --ff-s:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --shell:min(1240px,100% - 2.75rem);
+  --sec:clamp(4.5rem,10vw,9rem);
+  --e:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}*{margin:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:5rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+body{font-family:var(--ff-s);font-size:clamp(.95rem,.4vw+.85rem,1.0625rem);line-height:1.78;font-weight:300;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg,iframe{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul,ol{list-style:none;padding:0}::selection{background:var(--accent);color:var(--bg)}
+:focus-visible{outline:2px solid var(--accent-soft);outline-offset:3px}
+h1,h2,h3,h4{font-family:var(--ff-d);font-weight:300;line-height:1.08;letter-spacing:-.015em}
+.shell{width:var(--shell);margin-inline:auto}
+.sec{padding-block:var(--sec)}
+.eyebrow{font-size:.6875rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--accent-soft);display:flex;align-items:center;gap:.8rem}
+.eyebrow::before{content:"";width:2.25rem;height:1px;background:var(--accent);flex:none}
+.lead{font-size:clamp(1.05rem,.55vw+.95rem,1.28rem);line-height:1.7;color:var(--ink-2)}
+.mute{color:var(--ink-2)}
+.rule{height:1px;background:var(--line);border:0}
+
+/* ---- buttons ----------------------------------------------------------- */
+.btn{position:relative;display:inline-flex;align-items:center;gap:.65rem;padding:1.05rem 2rem;border:1px solid var(--accent);background:var(--accent);color:var(--bg);font-size:.75rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;overflow:hidden;transition:color .45s var(--e)}
+.btn span{position:relative;z-index:1}
+.btn::after{content:"";position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform .5s var(--e)}
+.btn:hover::after,.btn:focus-visible::after{transform:translateY(0)}
+.btn--o{background:transparent;color:var(--ink);border-color:rgba(245,242,236,.3)}
+.btn--o::after{background:var(--accent)}
+.btn--o:hover{color:var(--bg);border-color:var(--accent)}
+.btn-row{display:flex;flex-wrap:wrap;gap:.9rem}
+.arw{transition:transform .4s var(--e)}.btn:hover .arw{transform:translateX(.3rem)}
+
+/* ---- header: centered logo split-nav ----------------------------------- */
+.hdr{position:fixed;inset:0 0 auto;z-index:90;padding-block:1.15rem;transition:background .45s var(--e),padding .45s var(--e),border-color .45s var(--e);border-bottom:1px solid transparent}
+.hdr.stuck{background:rgba(11,12,14,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding-block:.7rem;border-bottom-color:var(--line)}
+.hdr__in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1.5rem}
+.nav{display:flex;align-items:center;gap:clamp(1rem,1.9vw,2.1rem)}
+.nav--r{justify-content:flex-end}
+.nav a{white-space:nowrap;font-size:.6875rem;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-2);position:relative;padding-block:.3rem;transition:color .3s var(--e)}
+.nav a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--e)}
+.nav a:hover{color:var(--ink)}.nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.brand{display:grid;justify-items:center;gap:.25rem;text-align:center}
+.brand b{font-family:var(--ff-d);font-size:clamp(1.35rem,2vw,1.7rem);font-weight:400;letter-spacing:.36em;text-transform:uppercase;line-height:1;padding-left:.36em}
+.brand i{font-style:normal;font-size:.5rem;letter-spacing:.26em;text-transform:uppercase;color:var(--accent-soft);white-space:nowrap}
+.utils{display:flex;align-items:center;gap:.85rem;margin-left:.6rem}
+.tel{display:inline-flex;align-items:center;gap:.45rem;font-size:.72rem;letter-spacing:.08em;white-space:nowrap;color:var(--ink)}
+.lang{display:flex;border:1px solid rgba(245,242,236,.24)}
+.lang button{display:flex;align-items:center;gap:.35rem;padding:.34rem .55rem;font-size:.5938rem;font-weight:500;letter-spacing:.12em;color:var(--ink-3);transition:.3s var(--e)}
+.lang button svg{display:block;flex:none;border:.5px solid rgba(0,0,0,.35)}
+.lang button[aria-pressed="true"]{background:var(--accent);color:var(--bg)}
+.lang button:hover:not([aria-pressed="true"]){color:var(--ink)}
+.burger{display:none;width:2.5rem;height:2.5rem;position:relative;flex:none}
+.burger i{position:absolute;left:.5rem;right:.5rem;height:1px;background:var(--ink)}
+.burger i:nth-child(1){top:.95rem}.burger i:nth-child(2){bottom:.95rem}
+
+/* mobile drawer with explicit X */
+.drawer{position:fixed;inset:0;z-index:95;background:var(--bg);display:grid;align-content:center;justify-items:center;gap:1.6rem;transform:translateY(-100%);transition:transform .55s var(--e);visibility:hidden}
+body.menu .drawer{transform:none;visibility:visible}
+body.menu{overflow:hidden}
+.drawer a{font-family:var(--ff-d);font-size:1.65rem;letter-spacing:.04em}
+.drawer a:hover{color:var(--accent-soft)}
+.drawer__x{position:absolute;top:1rem;right:1.1rem;width:3rem;height:3rem;display:grid;place-items:center;border:1px solid var(--line);color:var(--ink)}
+.drawer__x::before{content:"✕";font-family:var(--ff-s);font-size:1.15rem;line-height:1}
+.drawer__x:hover{border-color:var(--accent);color:var(--accent-soft)}
+.drawer__tel{margin-top:.5rem;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-soft)}
+
+/* ---- hero: stacked editorial ------------------------------------------- */
+.hero{padding-top:clamp(7.5rem,14vh,10rem)}
+.hero__meta{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center;padding-bottom:1.6rem}
+.hero__loc{font-size:.6875rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+.hero h1{font-size:clamp(2.6rem,8.2vw,6.9rem);letter-spacing:-.03em;padding-block:.15em .25em}
+.hero h1 em{font-style:italic;color:var(--accent-soft)}
+.band{position:relative;height:clamp(15rem,36vh,25rem);overflow:hidden;background:var(--surface);border-block:1px solid var(--line)}
+.band svg{position:absolute;inset:0;width:100%;height:100%}
+.hero__grid{display:grid;gap:clamp(2rem,4vw,3.5rem);padding-top:clamp(2.25rem,4vw,3.25rem)}
+@media (min-width:56rem){.hero__grid{grid-template-columns:1.35fr 1fr;align-items:start}}
+.facts{display:grid;gap:1.15rem;border-left:1px solid var(--line);padding-left:1.6rem}
+.facts div b{display:block;font-family:var(--ff-d);font-size:2.15rem;line-height:1;color:var(--accent-soft);font-weight:300}
+.facts div span{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+
+/* ---- floating chips (social proof) ------------------------------------- */
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;padding-block:clamp(2.5rem,5vw,4rem)}
+.chip{display:inline-flex;align-items:center;gap:.55rem;padding:.6rem 1.1rem;border:1px solid var(--line);border-radius:100px;font-size:.75rem;letter-spacing:.05em;color:var(--ink-2);transition:.4s var(--e)}
+.chip::before{content:"";width:5px;height:5px;background:var(--accent);transform:rotate(45deg);flex:none}
+.chip:nth-child(3n){border-color:var(--line-2);color:var(--ink)}
+.chip:hover{border-color:var(--accent);color:var(--ink);transform:translateY(-2px)}
+
+/* ---- generic section head ---------------------------------------------- */
+.head{display:grid;gap:1.35rem;max-width:54rem;margin-bottom:clamp(2.75rem,5vw,4.5rem)}
+.head h2{font-size:clamp(2rem,4.6vw,3.6rem)}
+.head h2 em{font-style:italic;color:var(--accent-soft)}
+
+/* ---- about -------------------------------------------------------------- */
+.about{display:grid;gap:clamp(2rem,4vw,4rem)}
+@media (min-width:56rem){.about{grid-template-columns:1fr 1fr}}
+.about p+p{margin-top:1.15rem}
+
+/* ---- services: numbered editorial list --------------------------------- */
+.svc{border-top:1px solid var(--line)}
+.svc__row{display:grid;gap:1.25rem 3rem;padding-block:clamp(2.25rem,4vw,3.5rem);border-bottom:1px solid var(--line)}
+@media (min-width:56rem){.svc__row{grid-template-columns:.8fr 1.6fr}}
+.svc__lead{display:flex;gap:1.25rem;align-items:baseline}
+.svc__n{font-family:var(--ff-d);font-size:1.5rem;color:var(--accent);line-height:1;flex:none}
+.svc__row h3{font-size:clamp(1.5rem,2.5vw,2.1rem)}
+.svc__body p{color:var(--ink-2)}
+.svc__specs{display:flex;flex-wrap:wrap;gap:.45rem .5rem;margin-top:1.35rem}
+.svc__specs li{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);padding:.36rem .7rem}
+
+/* ---- products ---------------------------------------------------------- */
+.prod{display:grid;gap:clamp(1.75rem,3.5vw,3rem)}
+@media (min-width:48rem){.prod{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:76rem){.prod{grid-template-columns:repeat(4,1fr)}}
+.prod h3{font-size:1.35rem;padding-bottom:1rem;border-bottom:1px solid var(--line-2);margin-bottom:.5rem}
+.prod li{display:grid;gap:.1rem;padding-block:.75rem;border-bottom:1px solid var(--line)}
+.prod li b{font-weight:400;font-size:.9375rem}
+.prod li i{font-style:normal;font-size:.72rem;letter-spacing:.05em;color:var(--ink-3)}
+
+/* ---- sectors ----------------------------------------------------------- */
+.sect li{display:grid;gap:.5rem 2.5rem;padding-block:1.5rem;border-bottom:1px solid var(--line);transition:padding .4s var(--e)}
+@media (min-width:56rem){.sect li{grid-template-columns:3rem 15rem 1fr;align-items:baseline}}
+.sect li:first-child{border-top:1px solid var(--line)}
+.sect li:hover{padding-left:.75rem}
+.sect span{font-size:.65rem;letter-spacing:.18em;color:var(--accent)}
+.sect h3{font-size:1.3rem}
+.sect p{font-size:.9rem;color:var(--ink-2)}
+
+/* ---- process ----------------------------------------------------------- */
+.steps{display:grid;gap:1px;background:var(--line)}
+@media (min-width:44rem){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:68rem){.steps{grid-template-columns:repeat(5,1fr)}}
+.steps > li{background:var(--bg);padding:clamp(1.5rem,2.4vw,2rem);display:grid;gap:.7rem;align-content:start}
+.steps b{font-family:var(--ff-d);font-size:1.9rem;font-weight:300;color:var(--accent-soft);line-height:1}
+.steps h3{font-size:1.15rem}
+.steps p{font-size:.86rem;color:var(--ink-2);line-height:1.65}
+
+/* ---- gallery + lightbox ------------------------------------------------ */
+#gallery[hidden]{display:none}
+.gal{display:grid;gap:1px;background:var(--line);grid-template-columns:repeat(2,1fr)}
+@media (min-width:56rem){.gal{grid-template-columns:repeat(4,1fr)}}
+.gal button{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--surface)}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--e),opacity .4s var(--e)}
+.gal button:hover img{transform:scale(1.05);opacity:.85}
+.lb{position:fixed;inset:0;z-index:120;background:rgba(6,7,8,.96);display:none;place-items:center;padding:clamp(1rem,4vw,3rem)}
+.lb[open],.lb.on{display:grid}
+.lb img{max-width:100%;max-height:82vh;object-fit:contain}
+.lb__cap{margin-top:1rem;text-align:center;font-size:.8rem;color:var(--ink-2)}
+.lb__x,.lb__p,.lb__n{position:absolute;width:3rem;height:3rem;display:grid;place-items:center;border:1px solid var(--line);color:var(--ink);font-size:1.1rem}
+.lb__x{top:1rem;right:1rem}.lb__p{left:1rem;top:50%;transform:translateY(-50%)}.lb__n{right:1rem;top:50%;transform:translateY(-50%)}
+.lb__x:hover,.lb__p:hover,.lb__n:hover{border-color:var(--accent);color:var(--accent-soft)}
+
+/* ---- FAQ --------------------------------------------------------------- */
+.faq{display:grid;gap:0;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{display:flex;gap:1.25rem;align-items:baseline;justify-content:space-between;padding-block:1.35rem;cursor:pointer;list-style:none;font-family:var(--ff-d);font-size:clamp(1.1rem,1.7vw,1.45rem);line-height:1.3;transition:color .3s var(--e)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--accent-soft)}
+.faq summary::after{content:"+";font-family:var(--ff-s);font-size:1.1rem;color:var(--accent);flex:none;transition:transform .35s var(--e)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{padding-bottom:1.5rem;max-width:52rem;color:var(--ink-2);font-size:.95rem}
+.faq--inline{margin-top:clamp(2rem,4vw,3rem);border-top:1px solid var(--line-2)}
+.faq--inline h3{font-size:.6875rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-soft);font-family:var(--ff-s);padding-top:1.5rem}
+
+/* ---- contact: full-width band ------------------------------------------ */
+.band-c{background:var(--surface);border-block:1px solid var(--line)}
+.cwrap{display:grid;gap:clamp(2rem,4vw,3.5rem)}
+@media (min-width:60rem){.cwrap{grid-template-columns:.9fr 1.1fr}}
+address{font-style:normal;display:grid;gap:1.35rem}
+.info{display:grid;gap:.3rem;padding-bottom:1.2rem;border-bottom:1px solid var(--line)}
+.info dt{font-size:.625rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-soft)}
+.info dd{margin:0;font-size:1.02rem}
+.info a:hover{color:var(--accent-soft)}
+.info small{display:block;font-size:.78rem;color:var(--ink-3);margin-top:.3rem}
+.form{display:grid;gap:1.1rem}
+.frow{display:grid;gap:1.1rem}
+@media (min-width:40rem){.frow{grid-template-columns:1fr 1fr}}
+.f{display:grid;gap:.45rem}
+.f label{font-size:.625rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+.f input,.f select,.f textarea{width:100%;font:inherit;font-size:.9375rem;color:var(--ink);background:transparent;border:0;border-bottom:1px solid rgba(245,242,236,.22);padding:.65rem 0;border-radius:0;transition:border-color .35s var(--e)}
+.f select{appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23B8905A' fill='none'/%3E%3C/svg%3E") no-repeat right .2rem center}
+.f select option{background:var(--surface-2);color:var(--ink)}
+.f textarea{resize:vertical;min-height:6rem}
+.f input:focus,.f select:focus,.f textarea:focus{outline:0;border-color:var(--accent)}
+.f ::placeholder{color:rgba(245,242,236,.28)}
+.fnote{font-size:.72rem;color:var(--ink-3)}
+.fok{display:none;padding:.9rem 1.15rem;border:1px solid var(--accent);color:var(--accent-soft);font-size:.86rem}
+.form.sent .fok{display:block}
+.hp{position:absolute;left:-9999px;width:0;height:0;opacity:0}
+.map{width:100%;aspect-ratio:16/6;border:1px solid var(--line);filter:grayscale(1) contrast(1.05) brightness(.85);margin-top:clamp(2rem,4vw,3rem)}
+.dirs{font-size:.9rem;color:var(--ink-2);margin-top:1.25rem;max-width:46rem}
+
+/* ---- footer ------------------------------------------------------------ */
+.ftr{padding-block:clamp(3rem,5vw,4.5rem) 1.75rem;border-top:1px solid var(--line)}
+.ftr__t{display:grid;gap:2.25rem;padding-bottom:2.25rem;border-bottom:1px solid var(--line)}
+@media (min-width:56rem){.ftr__t{grid-template-columns:1.5fr 1fr 1fr}}
+.ftr h4{font-family:var(--ff-s);font-size:.625rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-soft);margin-bottom:1rem}
+.ftr ul{display:grid;gap:.55rem;font-size:.875rem;color:var(--ink-2)}
+.ftr a:hover{color:var(--ink)}
+.ftr__b{display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between;padding-top:1.5rem;font-size:.75rem;color:var(--ink-3)}
+.ftr__b a{color:var(--accent-soft)}.ftr__b a:hover{color:var(--ink)}
+.fab{position:fixed;right:1rem;bottom:1rem;z-index:80;display:none;align-items:center;gap:.5rem;background:var(--accent);color:var(--bg);padding:.9rem 1.3rem;font-size:.6875rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+
+/* ---- reveal + responsive ----------------------------------------------- */
+.rv{opacity:0;transform:translateY(1.5rem);transition:opacity .85s var(--e),transform .85s var(--e)}
+.rv.in{opacity:1;transform:none}
+@media (max-width:63.99rem){
+  .hdr__in{grid-template-columns:auto 1fr auto}
+  .nav--l,.nav--r{display:none}
+  .brand{justify-items:start;text-align:left}
+  .burger{display:block;justify-self:end}
+  .utils{display:none}
+}
+@media (max-width:47.99rem){
+  :root{--shell:min(1240px,100% - 2rem)}
+  .fab{display:inline-flex}
+  .facts{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:1.35rem;grid-template-columns:repeat(2,1fr)}
+}
+@media print{.hdr,.fab,.drawer,.form,.map,.chips{display:none}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="shell hdr__in">
+    <nav class="nav nav--l" aria-label="Κύρια πλοήγηση">
+      <a href="#etaireia" data-i18n="nav.about">Η εταιρεία</a>
+      <a href="#ypiresies" data-i18n="nav.svc">Υπηρεσίες</a>
+      <a href="#proionta" data-i18n="nav.prod">Προϊόντα</a>
+    </nav>
+
+    <a class="brand" href="#top" aria-label="DANTOS">
+      <b>Dantos</b>
+      <i data-i18n="brand.sub">Σίδερα &amp; Οικοδομικά Υλικά · Μύκονος</i>
+    </a>
+
+    <nav class="nav nav--r" aria-label="Δευτερεύουσα πλοήγηση">
+      <a href="#erga" data-i18n="nav.sect">Έργα</a>
+      <a href="#erotiseis" data-i18n="nav.faq">Ερωτήσεις</a>
+      <a href="#epikoinonia" data-i18n="nav.contact">Επικοινωνία</a>
+      <span class="utils">
+        <a class="tel" data-cfg-href="telHref" href="#">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          <span data-cfg="tel"></span>
+        </a>
+        <span class="lang" role="group" aria-label="Γλώσσα / Language">
+          <button type="button" data-lang="el" aria-pressed="true" aria-label="Ελληνικά">
+            <svg width="15" height="10" viewBox="0 0 27 18" aria-hidden="true"><rect width="27" height="18" fill="#0D5EAF"/><g fill="#fff"><rect y="2" width="27" height="2"/><rect y="6" width="27" height="2"/><rect y="10" width="27" height="2"/><rect y="14" width="27" height="2"/></g><rect width="10" height="10" fill="#0D5EAF"/><g fill="#fff"><rect x="4" width="2" height="10"/><rect y="4" width="10" height="2"/></g></svg>ΕΛ</button>
+          <button type="button" data-lang="en" aria-pressed="false" aria-label="English">
+            <svg width="15" height="10" viewBox="0 0 60 30" aria-hidden="true"><clipPath id="uk"><path d="M0 0h60v30H0z"/></clipPath><g clip-path="url(#uk)"><path d="M0 0h60v30H0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>EN</button>
+        </span>
+      </span>
+    </nav>
+
+    <button class="burger" type="button" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="drawer"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Μενού">
+  <button class="drawer__x" type="button" aria-label="Κλείσιμο μενού"></button>
+  <a href="#etaireia" data-i18n="nav.about">Η εταιρεία</a>
+  <a href="#ypiresies" data-i18n="nav.svc">Υπηρεσίες</a>
+  <a href="#proionta" data-i18n="nav.prod">Προϊόντα</a>
+  <a href="#erga" data-i18n="nav.sect">Έργα</a>
+  <a href="#erotiseis" data-i18n="nav.faq">Ερωτήσεις</a>
+  <a href="#epikoinonia" data-i18n="nav.contact">Επικοινωνία</a>
+  <a class="drawer__tel" data-cfg-href="telHref" href="#"><span data-cfg="tel"></span></a>
+  <span class="lang" role="group" aria-label="Γλώσσα / Language">
+    <button type="button" data-lang="el" aria-pressed="true" aria-label="Ελληνικά">ΕΛ</button>
+    <button type="button" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
+  </span>
+</div>
+
+<main id="top">
+
+<!-- ===================== HERO — stacked editorial ===================== -->
+<section class="hero">
+  <div class="shell">
+    <div class="hero__meta">
+      <p class="eyebrow" data-i18n="hero.eyebrow">Σιδηρεμπόριο &amp; δομικά υλικά</p>
+      <p class="hero__loc" data-i18n="hero.loc">Αργύραινα · Μύκονος · Κυκλάδες</p>
+    </div>
+    <h1 data-i18n="hero.h1">Σίδερα &amp; οικοδομικά υλικά <em>στη Μύκονο</em></h1>
+  </div>
+
+  <div class="band" aria-hidden="true">
+    <svg viewBox="0 0 1400 400" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1B1F25"/><stop offset="1" stop-color="#0B0C0E"/></linearGradient>
+        <linearGradient id="bar" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1400" y2="0"><stop offset="0" stop-color="#B8905A" stop-opacity=".05"/><stop offset=".45" stop-color="#D7B37A" stop-opacity=".8"/><stop offset="1" stop-color="#B8905A" stop-opacity=".05"/></linearGradient>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0v40" fill="none" stroke="#F5F2EC" stroke-opacity=".07"/></pattern>
+      </defs>
+      <rect width="1400" height="400" fill="url(#bg1)"/>
+      <rect width="1400" height="400" fill="url(#grid)"/>
+      <g stroke="url(#bar)" stroke-width="4">
+        <path d="M0 132h1400"/><path d="M0 156h1400"/><path d="M0 180h1400"/><path d="M0 204h1400"/><path d="M0 228h1400"/><path d="M0 252h1400"/>
+      </g>
+      <g fill="none" stroke="#D7B37A" stroke-opacity=".55">
+        <circle cx="1105" cy="192" r="16"/><circle cx="1160" cy="192" r="22"/><circle cx="1232" cy="192" r="30"/>
+        <circle cx="1105" cy="192" r="6" stroke-opacity=".3"/><circle cx="1160" cy="192" r="9" stroke-opacity=".3"/><circle cx="1232" cy="192" r="13" stroke-opacity=".3"/>
+      </g>
+      <path d="M120 330h150v-16H136v-96h-16z" fill="#D7B37A" fill-opacity=".16" stroke="#D7B37A" stroke-opacity=".55"/>
+      <rect x="330" y="284" width="140" height="46" fill="#D7B37A" fill-opacity=".08" stroke="#D7B37A" stroke-opacity=".55"/>
+      <rect x="340" y="294" width="120" height="26" fill="none" stroke="#D7B37A" stroke-opacity=".3"/>
+      <text x="700" y="70" text-anchor="middle" fill="#F5F2EC" fill-opacity=".2" font-family="Georgia,serif" font-size="26" letter-spacing="14">B500C · T500 · AISI 316</text>
+    </svg>
+  </div>
+
+  <div class="shell hero__grid">
+    <div>
+      <p class="lead" data-i18n="hero.lead">Από τη μπετόβεργα και το δομικό πλέγμα μέχρι την τελική μεταλλική κατασκευή. Κρατάμε απόθεμα στο νησί, δίνουμε γραπτή προσφορά σε 24 ώρες και παραδίδουμε στο εργοτάξιο — ώστε το έργο σας να μη σταματά περιμένοντας το επόμενο πλοίο.</p>
+      <div class="btn-row" style="margin-top:2rem">
+        <a class="btn" href="#epikoinonia"><span data-i18n="hero.cta1">Ζητήστε προσφορά</span><svg class="arw" width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M1 5h12M9 1l4 4-4 4"/></svg></a>
+        <a class="btn btn--o" data-cfg-href="telHref" href="#"><span data-i18n="hero.cta2">Καλέστε μας</span></a>
+      </div>
+    </div>
+    <div class="facts">
+      <div><b data-i18n="hero.f1n">Β500C</b><span data-i18n="hero.f1l">Πιστοποιημένος χάλυβας</span></div>
+      <div><b data-i18n="hero.f2n">24ω</b><span data-i18n="hero.f2l">Γραπτή προσφορά</span></div>
+      <div><b data-i18n="hero.f3n">Φ8–Φ25</b><span data-i18n="hero.f3l">Διατομές σε στοκ</span></div>
+    </div>
+  </div>
+
+  <div class="shell">
+    <ul class="chips rv" aria-label="Στοιχεία εμπιστοσύνης">
+      <li class="chip" data-i18n="chip1">Απόθεμα στη Μύκονο</li>
+      <li class="chip" data-i18n="chip2">Πιστοποιητικά παραγωγού</li>
+      <li class="chip" data-i18n="chip3">Κοπή &amp; διαμόρφωση οπλισμού</li>
+      <li class="chip" data-i18n="chip4">Παράδοση στο εργοτάξιο</li>
+      <li class="chip" data-i18n="chip5">Τιμή κλειδωμένη ανά έργο</li>
+      <li class="chip" data-i18n="chip6">Ανοιχτά όλο τον χρόνο</li>
+      <li class="chip" data-i18n="chip7">Εξυπηρέτηση σε δύσκολη πρόσβαση</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="sec" id="etaireia">
+  <div class="shell">
+    <div class="head rv">
+      <p class="eyebrow" data-i18n="about.eyebrow">01 — Η εταιρεία</p>
+      <h2 data-i18n="about.h2">Εμπόριο σιδήρου στη Μύκονο, με <em>απόθεμα</em> στο νησί</h2>
+    </div>
+    <div class="about rv">
+      <div>
+        <p class="lead" data-i18n="about.p1">Η DANTOS είναι οικογενειακή επιχείρηση εμπορίου σιδήρου και οικοδομικών υλικών με έδρα τη Μύκονο. Εξυπηρετούμε εργολάβους, πολιτικούς μηχανικούς, αρχιτέκτονες, ξενοδοχειακές μονάδες και ιδιώτες σε ολόκληρο το νησί.</p>
+      </div>
+      <div>
+        <p class="mute" data-i18n="about.p2">Σε ένα νησί όπου κάθε παραγγελία περνά από το πλοίο, τη διαφορά την κάνει το τι υπάρχει ήδη εδώ. Κρατάμε μόνιμο στοκ στα υλικά που ζητούνται καθημερινά — μπετόβεργα, δομικά πλέγματα, κοιλοδοκούς, λαμαρίνες, τσιμέντο και μονωτικά — ώστε το εργοτάξιο να μη μένει.</p>
+        <p class="mute" data-i18n="about.p3">Δουλεύουμε με πιστοποιημένο χάλυβα, δίνουμε γραπτή προσφορά με σαφή προμέτρηση και παραδίδουμε εκεί που χτίζετε. Χωρίς εκπλήξεις στην τιμή και χωρίς κενά στο χρονοδιάγραμμα.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICES — numbered editorial list ===================== -->
+<section class="sec" id="ypiresies">
+  <div class="shell">
+    <div class="head rv">
+      <p class="eyebrow" data-i18n="svc.eyebrow">02 — Υπηρεσίες</p>
+      <h2 data-i18n="svc.h2">Τέσσερις τομείς, <em>ένας</em> συνομιλητής</h2>
+      <p class="lead" data-i18n="svc.lead">Ό,τι χρειάζεται ένα εργοτάξιο σε σίδηρο και δομικά υλικά, από ένα σημείο: μία προσφορά, μία παράδοση, μία ευθύνη.</p>
+    </div>
+
+    <div class="svc">
+      <article class="svc__row rv">
+        <div class="svc__lead"><span class="svc__n">01</span><h3 data-i18n="svc1.h3">Σίδηρος οπλισμού — μπετόβεργα Β500C</h3></div>
+        <div class="svc__body">
+          <p data-i18n="svc1.p">Ο χάλυβας οπλισμού είναι το υλικό που δεν σηκώνει έκπτωση: αν η ποιότητα δεν είναι η δηλωμένη, το πρόβλημα εμφανίζεται χρόνια αργότερα. Εμπορευόμαστε αποκλειστικά πιστοποιημένο χάλυβα Β500C, σε διατομές από Φ8 έως Φ25, σε ευθύγραμμες βέργες και σε ρόλο. Κόβουμε και διαμορφώνουμε συνδετήρες, τσέρκια και ειδικά τεμάχια σύμφωνα με τον πίνακα οπλισμού του μηχανικού σας, ώστε το συνεργείο να μη χάνει ώρες σε κοπές επί τόπου. Κρατάμε μόνιμο απόθεμα στη Μύκονο σε όλες τις τρέχουσες διατομές και στα δομικά πλέγματα Τ131 έως Τ500. Για κάθε παρτίδα παραδίδουμε τα πιστοποιητικά του παραγωγού και δελτίο αποστολής με σαφή αναφορά ποιότητας και ποσότητας.</p>
+          <ul class="svc__specs"><li data-i18n="svc1.s1">Φ8 – Φ25</li><li data-i18n="svc1.s2">Πλέγματα Τ131 – Τ500</li><li data-i18n="svc1.s3">Κοπή &amp; διαμόρφωση</li><li data-i18n="svc1.s4">Πιστοποιητικά παρτίδας</li></ul>
+        </div>
+      </article>
+
+      <article class="svc__row rv">
+        <div class="svc__lead"><span class="svc__n">02</span><h3 data-i18n="svc2.h3">Οικοδομικά &amp; δομικά υλικά</h3></div>
+        <div class="svc__body">
+          <p data-i18n="svc2.p">Ένα εργοτάξιο στη Μύκονο σταματά συνήθως όχι από τα μεγάλα, αλλά από τα μικρά: το τσιμέντο που τέλειωσε, η κόλλα που δεν ήρθε με το πλοίο, η μόνωση που έμεινε στον Πειραιά. Γι' αυτό κρατάμε στο νησί σταθερό απόθεμα στα βασικά: τσιμέντο σε σακί και σε παλέτα, ασβέστη, έτοιμα κονιάματα και σοβάδες, κόλλες πλακιδίων, τσιμεντοκονίες, τούβλα, τσιμεντόλιθους και γυψοσανίδα. Στη θερμομόνωση διαθέτουμε XPS, EPS και πετροβάμβακα, και στην υγρομόνωση ασφαλτόπανα και επαλειφόμενα συστήματα κατάλληλα για το θαλασσινό περιβάλλον των Κυκλάδων. Συμπληρώνουμε με τα αναλώσιμα που ζητά καθημερινά ένα συνεργείο: δίσκους κοπής, ηλεκτρόδια, σύρμα δεσίματος και αποστάτες.</p>
+          <ul class="svc__specs"><li data-i18n="svc2.s1">Τσιμέντο &amp; κονιάματα</li><li data-i18n="svc2.s2">Τούβλα &amp; τσιμεντόλιθοι</li><li data-i18n="svc2.s3">Θερμομόνωση</li><li data-i18n="svc2.s4">Υγρομόνωση</li></ul>
+        </div>
+      </article>
+
+      <article class="svc__row rv">
+        <div class="svc__lead"><span class="svc__n">03</span><h3 data-i18n="svc3.h3">Μεταλλικές κατασκευές</h3></div>
+        <div class="svc__body">
+          <p data-i18n="svc3.p">Πέρα από το εμπόριο, αναλαμβάνουμε και την κατασκευή. Σχεδιάζουμε και υλοποιούμε μεταλλικούς σκελετούς, υποστυλώματα και δοκούς για προσθήκες και ημιυπαίθριους χώρους, καθώς και κάγκελα, κουπαστές, θύρες, περιφράξεις, πέργκολες και στέγαστρα. Στη Μύκονο η επιλογή του υλικού είναι κρίσιμη: το αλάτι και ο βοριάς φθείρουν ό,τι δεν έχει προστατευτεί σωστά. Δουλεύουμε με εν θερμώ γαλβανισμένα προφίλ και με ανοξείδωτο χάλυβα AISI 316 στα σημεία που εκτίθενται στη θάλασσα, με ηλεκτροστατική βαφή σε απόχρωση της επιλογής σας. Παίρνουμε μέτρα επιτόπου, στέλνουμε σχέδιο πριν την κατασκευή και τοποθετούμε με δικό μας συνεργείο.</p>
+          <ul class="svc__specs"><li data-i18n="svc3.s1">Μεταλλικοί σκελετοί</li><li data-i18n="svc3.s2">Κάγκελα &amp; κουπαστές</li><li data-i18n="svc3.s3">Πέργκολες &amp; στέγαστρα</li><li data-i18n="svc3.s4">AISI 316 &amp; γαλβανιζέ</li></ul>
+        </div>
+      </article>
+
+      <article class="svc__row rv">
+        <div class="svc__lead"><span class="svc__n">04</span><h3 data-i18n="svc4.h3">Μεταφορά &amp; παράδοση στο νησί</h3></div>
+        <div class="svc__body">
+          <p data-i18n="svc4.p">Στα νησιά η παράδοση είναι μέρος του προϊόντος. Διαθέτουμε δικά μας οχήματα και εξοπλισμό φόρτωσης και παραδίδουμε σε όλη τη Μύκονο — Χώρα, Άνω Μερά, Ορνό, Πλατύ Γιαλό, Ελιά, Καλαφάτη, Άγιο Στέφανο, Τούρλο — καθώς και σε σημεία με δύσκολη πρόσβαση, όπου δεν περνά μεγάλο φορτηγό. Συντονίζουμε τις παραλαβές μας με τα δρομολόγια των πλοίων, ώστε τα υλικά που δεν κρατάμε σε στοκ να φτάνουν στην ημερομηνία που έχει προγραμματίσει ο εργολάβος και όχι όποτε βρεθεί θέση. Οι παραδόσεις κλείνονται σε συγκεκριμένη ημέρα και ώρα, με εκφόρτωση στο σημείο που θα υποδείξετε.</p>
+          <ul class="svc__specs"><li data-i18n="svc4.s1">Δικά μας οχήματα</li><li data-i18n="svc4.s2">Εκφόρτωση επί τόπου</li><li data-i18n="svc4.s3">Προγραμματισμένες παραδόσεις</li><li data-i18n="svc4.s4">Συντονισμός με το πλοίο</li></ul>
+        </div>
+      </article>
+    </div>
+
+    <!-- FAQ — part 1 of the split roll: top 3 questions inline -->
+    <div class="faq faq--inline rv">
+      <h3 data-i18n="faq.inline">Τα πιο συχνά που μας ρωτούν</h3>
+      <details name="faq"><summary data-i18n="faq1.q">Έχετε τα υλικά σε στοκ στη Μύκονο;</summary>
+        <p data-i18n="faq1.a">Ναι. Κρατάμε μόνιμο απόθεμα στη Μύκονο στα υλικά που ζητούνται καθημερινά: μπετόβεργα Β500C σε όλες τις τρέχουσες διατομές, δομικά πλέγματα, κοιλοδοκούς, λαμαρίνες, τσιμέντο και μονωτικά. Έτσι δεν περιμένετε το επόμενο πλοίο για τα βασικά. Για ειδικές διατομές ή μεγάλες ποσότητες παραγγέλνουμε και σας δίνουμε συγκεκριμένη ημερομηνία παράδοσης από την αρχή.</p></details>
+      <details name="faq"><summary data-i18n="faq2.q">Σε πόσο χρόνο μου δίνετε προσφορά;</summary>
+        <p data-i18n="faq2.a">Εντός 24 ωρών από τη στιγμή που θα λάβουμε τη λίστα υλικών ή τα σχέδια. Η προσφορά είναι γραπτή και αναλυτική: ποσότητες, ποιότητες, τιμές μονάδας και κόστος παράδοσης, χωρίς κρυφές χρεώσεις. Αν απαιτείται προμέτρηση από σχέδια μπορεί να χρειαστεί λίγο παραπάνω, και σας το λέμε από την πρώτη επικοινωνία.</p></details>
+      <details name="faq"><summary data-i18n="faq3.q">Παραδίδετε στο εργοτάξιο;</summary>
+        <p data-i18n="faq3.a">Ναι, με δικά μας οχήματα, σε όλη τη Μύκονο. Κλείνουμε συγκεκριμένη ημέρα και ώρα και εκφορτώνουμε στο σημείο που θα υποδείξετε. Εξυπηρετούμε και οικισμούς με δύσκολη πρόσβαση, όπου δεν περνά μεγάλο φορτηγό, με κατάλληλο όχημα. Η χρέωση της μεταφοράς αναγράφεται πάντα ξεχωριστά στην προσφορά.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRODUCTS ===================== -->
+<section class="sec" id="proionta" style="background:var(--surface);border-block:1px solid var(--line)">
+  <div class="shell">
+    <div class="head rv">
+      <p class="eyebrow" data-i18n="prod.eyebrow">03 — Προϊόντα</p>
+      <h2 data-i18n="prod.h2">Δομικά πλέγματα &amp; σίδηρος εμπορίου, <em>σε στοκ</em></h2>
+      <p class="lead" data-i18n="prod.lead">Ενδεικτικός κατάλογος. Για διατομές, ποιότητες ή ποσότητες εκτός λίστας, ρωτήστε μας — τις περισσότερες τις φέρνουμε με το επόμενο δρομολόγιο.</p>
+    </div>
+    <div class="prod rv">
+      <article>
+        <h3 data-i18n="prod.g1">Χάλυβας οπλισμού</h3>
+        <ul>
+          <li><b data-i18n="prod.g1a">Μπετόβεργα Β500C</b><i data-i18n="prod.g1as">Φ8 · Φ10 · Φ12 · Φ14 · Φ16 · Φ20 · Φ25</i></li>
+          <li><b data-i18n="prod.g1b">Δομικό πλέγμα</b><i data-i18n="prod.g1bs">Τ131 · Τ188 · Τ196 · Τ257 · Τ500</i></li>
+          <li><b data-i18n="prod.g1c">Χάλυβας σε ρόλο</b><i data-i18n="prod.g1cs">Φ8 – Φ14</i></li>
+          <li><b data-i18n="prod.g1d">Συνδετήρες &amp; αποστάτες</b><i data-i18n="prod.g1ds">Πλαστικοί · μεταλλικοί</i></li>
+        </ul>
+      </article>
+      <article>
+        <h3 data-i18n="prod.g2">Σίδηρος εμπορίου</h3>
+        <ul>
+          <li><b data-i18n="prod.g2a">Κοιλοδοκοί</b><i data-i18n="prod.g2as">20×20 έως 200×100 mm</i></li>
+          <li><b data-i18n="prod.g2b">Λαμαρίνες</b><i data-i18n="prod.g2bs">Λείες · κριθαράκι · γαλβανιζέ</i></li>
+          <li><b data-i18n="prod.g2c">Γωνιές, λάμες, στρατζαριστά</b><i data-i18n="prod.g2cs">Πλήρης γκάμα</i></li>
+          <li><b data-i18n="prod.g2d">Δοκοί IPE / HEA / UPN</b><i data-i18n="prod.g2ds">Κατόπιν παραγγελίας</i></li>
+          <li><b data-i18n="prod.g2e">Σωλήνες</b><i data-i18n="prod.g2es">Μαύροι · γαλβανιζέ</i></li>
+        </ul>
+      </article>
+      <article>
+        <h3 data-i18n="prod.g3">Δομικά &amp; μονωτικά</h3>
+        <ul>
+          <li><b data-i18n="prod.g3a">Τσιμέντο</b><i data-i18n="prod.g3as">Σακί 25 kg · παλέτα</i></li>
+          <li><b data-i18n="prod.g3b">Έτοιμα κονιάματα</b><i data-i18n="prod.g3bs">Σοβάδες · κόλλες · τσιμεντοκονίες</i></li>
+          <li><b data-i18n="prod.g3c">Θερμομόνωση</b><i data-i18n="prod.g3cs">XPS · EPS · πετροβάμβακας</i></li>
+          <li><b data-i18n="prod.g3d">Υγρομόνωση</b><i data-i18n="prod.g3ds">Ασφαλτόπανα · επαλειφόμενα</i></li>
+        </ul>
+      </article>
+      <article>
+        <h3 data-i18n="prod.g4">Ανοξείδωτα &amp; ειδικά</h3>
+        <ul>
+          <li><b data-i18n="prod.g4a">Ανοξείδωτος χάλυβας</b><i data-i18n="prod.g4as">AISI 304 · 316 (θαλάσσιο)</i></li>
+          <li><b data-i18n="prod.g4b">Γαλβανισμένα προφίλ</b><i data-i18n="prod.g4bs">Εν θερμώ γαλβάνισμα</i></li>
+          <li><b data-i18n="prod.g4c">Συρματοπλέγματα &amp; περιφράξεις</b><i data-i18n="prod.g4cs">Ρολό · πάνελ</i></li>
+          <li><b data-i18n="prod.g4d">Ηλεκτρόδια &amp; αναλώσιμα</b><i data-i18n="prod.g4ds">Συγκόλληση · κοπή</i></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTORS ===================== -->
+<section class="sec" id="erga">
+  <div class="shell">
+    <div class="head rv">
+      <p class="eyebrow" data-i18n="sect.eyebrow">04 — Έργα</p>
+      <h2 data-i18n="sect.h2">Βίλες, ξενοδοχεία και ανακαινίσεις <em>σε όλο το νησί</em></h2>
+    </div>
+    <ul class="sect rv">
+      <li><span>/ 01</span><h3 data-i18n="sect1.t">Ιδιωτικές βίλες</h3><p data-i18n="sect1.d">Πολυτελείς κατοικίες με απαιτητικές λεπτομέρειες και αυστηρή παράδοση πριν τη σεζόν.</p></li>
+      <li><span>/ 02</span><h3 data-i18n="sect2.t">Ξενοδοχεία &amp; resorts</h3><p data-i18n="sect2.d">Μεγάλες ποσότητες, παραδόσεις σε φάσεις και συντονισμός με πολλά συνεργεία ταυτόχρονα.</p></li>
+      <li><span>/ 03</span><h3 data-i18n="sect3.t">Πισίνες &amp; εξωτερικοί χώροι</h3><p data-i18n="sect3.d">Οπλισμοί λεκάνης, μεταλλικά στοιχεία και κατασκευές ανθεκτικές στο θαλασσινό περιβάλλον.</p></li>
+      <li><span>/ 04</span><h3 data-i18n="sect4.t">Ανακαινίσεις</h3><p data-i18n="sect4.d">Μικρές και μεσαίες ποσότητες, γρήγορη εξυπηρέτηση και παράδοση μέσα στον οικισμό.</p></li>
+      <li><span>/ 05</span><h3 data-i18n="sect5.t">Τεχνικά &amp; δημόσια έργα</h3><p data-i18n="sect5.d">Πιστοποιημένα υλικά με πλήρη ιχνηλασιμότητα και τα παραστατικά που απαιτούνται.</p></li>
+      <li><span>/ 06</span><h3 data-i18n="sect6.t">Επαγγελματικοί χώροι</h3><p data-i18n="sect6.d">Καταστήματα, εστίαση και beach clubs — από τον σκελετό μέχρι το τελείωμα.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== PROCESS ===================== -->
+<section class="sec" id="diadikasia" style="background:var(--surface);border-block:1px solid var(--line)">
+  <div class="shell">
+    <div class="head rv">
+      <p class="eyebrow" data-i18n="proc.eyebrow">05 — Διαδικασία</p>
+      <h2 data-i18n="proc.h2">Προσφορά υλικών σε <em>πέντε βήματα</em></h2>
+    </div>
+    <ol class="steps rv">
+      <li><b>01</b><h3 data-i18n="proc1.t">Προμέτρηση</h3><p data-i18n="proc1.d">Στέλνετε σχέδια ή λίστα υλικών. Αν βοηθά, περνάμε από το εργοτάξιο.</p></li>
+      <li><b>02</b><h3 data-i18n="proc2.t">Γραπτή προσφορά</h3><p data-i18n="proc2.d">Αναλυτική προσφορά με ποσότητες, ποιότητες και τιμές, εντός 24 ωρών.</p></li>
+      <li><b>03</b><h3 data-i18n="proc3.t">Δέσμευση υλικού</h3><p data-i18n="proc3.d">Το υλικό δεσμεύεται στο όνομά σας και η τιμή κλειδώνει για το έργο.</p></li>
+      <li><b>04</b><h3 data-i18n="proc4.t">Παράδοση</h3><p data-i18n="proc4.d">Παράδοση στο εργοτάξιο, σε ημέρα και ώρα που συμφωνούμε από πριν.</p></li>
+      <li><b>05</b><h3 data-i18n="proc5.t">Υποστήριξη</h3><p data-i18n="proc5.d">Συμπληρωματικές παραγγελίες, τεχνικές διευκρινίσεις και πιστοποιητικά όποτε χρειαστούν.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================== GALLERY (auto-hidden until photos are added to CFG.gallery) ===================== -->
+<section class="sec" id="gallery" hidden>
+  <div class="shell">
+    <div class="head rv">
+      <p class="eyebrow" data-i18n="gal.eyebrow">06 — Η μάντρα</p>
+      <h2 data-i18n="gal.h2">Ο χώρος και τα υλικά μας</h2>
+    </div>
+    <div class="gal rv" id="gal"></div>
+  </div>
+</section>
+
+<!-- ===================== FAQ — part 2 of the split roll ===================== -->
+<section class="sec" id="erotiseis">
+  <div class="shell">
+    <div class="head rv">
+      <p class="eyebrow" data-i18n="faq.eyebrow">07 — Συχνές ερωτήσεις</p>
+      <h2 data-i18n="faq.h2">Ό,τι ρωτούν οι εργολάβοι <em>πριν παραγγείλουν</em></h2>
+    </div>
+    <div class="faq rv">
+      <details name="faq2"><summary data-i18n="faq4.q">Δίνετε πιστοποιητικά για τον χάλυβα;</summary>
+        <p data-i18n="faq4.a">Ναι. Για κάθε παρτίδα χάλυβα Β500C παραδίδουμε τα πιστοποιητικά του παραγωγού και δελτίο αποστολής με σαφή αναφορά ποιότητας, διατομής και ποσότητας. Αν το έργο σας είναι δημόσιο ή απαιτεί ιχνηλασιμότητα, πείτε μας το από την αρχή ώστε να κρατήσουμε τα αντίστοιχα παραστατικά σε αρχείο και να τα έχετε μαζί με την παράδοση.</p></details>
+      <details name="faq2"><summary data-i18n="faq5.q">Κόβετε και διαμορφώνετε τον οπλισμό κατά παραγγελία;</summary>
+        <p data-i18n="faq5.a">Ναι. Κόβουμε σε μήκος και διαμορφώνουμε συνδετήρες, τσέρκια και ειδικά τεμάχια σύμφωνα με τον πίνακα οπλισμού του μηχανικού σας. Στείλτε μας τον πίνακα ή τα σχέδια και επιστρέφουμε προσφορά με τα τεμάχια αριθμημένα. Έτσι ο οπλισμός φτάνει έτοιμος στο εργοτάξιο και το συνεργείο δεν χάνει ώρες σε κοπές επί τόπου.</p></details>
+      <details name="faq2"><summary data-i18n="faq6.q">Πουλάτε και σε ιδιώτες ή μόνο σε εργολάβους;</summary>
+        <p data-i18n="faq6.a">Και στους δύο. Δουλεύουμε καθημερινά με εργολάβους, μηχανικούς και ξενοδοχειακές μονάδες, αλλά εξυπηρετούμε εξίσου ιδιώτες που κάνουν ανακαίνιση ή μικρή επέμβαση. Δεν υπάρχει ελάχιστη παραγγελία για να έρθετε στη μάντρα. Για μικρές ποσότητες συνήθως συμφέρει η παραλαβή από εμάς, και σας το λέμε ανοιχτά.</p></details>
+      <details name="faq2"><summary data-i18n="faq7.q">Τι γίνεται αν χρειαστώ επιπλέον υλικό στη μέση του έργου;</summary>
+        <p data-i18n="faq7.a">Είναι το σύνηθες και το έχουμε προβλέψει. Το υλικό της προσφοράς σας παραμένει δεσμευμένο στο όνομά σας και η τιμή κλειδώνει για τη διάρκεια του έργου, οπότε μια συμπληρωματική παραγγελία δεν ανατρέπει τον προϋπολογισμό. Τηλεφωνείτε, δίνετε τις ποσότητες και μπαίνει στο επόμενο δρομολόγιο παράδοσης.</p></details>
+      <details name="faq2"><summary data-i18n="faq8.q">Λειτουργείτε και τον χειμώνα, εκτός σεζόν;</summary>
+        <p data-i18n="faq8.a">Ναι, όλο τον χρόνο. Στη Μύκονο ο χειμώνας είναι η περίοδος που χτίζεται το μεγαλύτερο μέρος των έργων, ώστε να είναι έτοιμα πριν τη σεζόν. Το ωράριο μπορεί να διαφοροποιείται εκτός σεζόν, γι' αυτό ένα τηλεφώνημα πριν έρθετε στη μάντρα γλιτώνει άσκοπη διαδρομή.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT — full-width band ===================== -->
+<section class="sec band-c" id="epikoinonia">
+  <div class="shell">
+    <div class="head rv">
+      <p class="eyebrow" data-i18n="con.eyebrow">08 — Επικοινωνία</p>
+      <h2 data-i18n="con.h2">Ζητήστε προσφορά για <em>το έργο σας</em></h2>
+      <p class="lead" data-i18n="con.lead">Στείλτε μας τη λίστα υλικών ή περιγράψτε απλώς το έργο. Απαντάμε εντός 24 ωρών.</p>
+    </div>
+
+    <div class="cwrap">
+      <address class="rv">
+        <dl class="info"><dt data-i18n="con.tel">Τηλέφωνο</dt><dd><a data-cfg-href="telHref" href="#" data-cfg="tel"></a></dd></dl>
+        <dl class="info"><dt data-i18n="con.mob">Κινητό</dt><dd><a data-cfg-href="mobHref" href="#" data-cfg="mob"></a></dd></dl>
+        <dl class="info"><dt data-i18n="con.mail">Email</dt><dd><a data-cfg-href="mailHref" href="#" data-cfg="mail"></a></dd></dl>
+        <dl class="info"><dt data-i18n="con.addr">Διεύθυνση</dt><dd><span data-cfg="addr"></span>
+          <small><a data-cfg-href="maps" href="#" target="_blank" rel="noopener" data-i18n="con.dirs">Οδηγίες πρόσβασης →</a></small></dd></dl>
+        <dl class="info" style="border-bottom:0"><dt data-i18n="con.hours">Ωράριο</dt><dd><span data-cfg="hours"></span></dd></dl>
+      </address>
+
+      <div class="rv">
+        <form class="form" id="qform" novalidate>
+          <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="frow">
+            <p class="f"><label for="fn" data-i18n="fm.name">Ονοματεπώνυμο</label><input id="fn" name="name" type="text" required autocomplete="name" data-i18n-ph="fm.namePh" placeholder="Το όνομά σας"></p>
+            <p class="f"><label for="fp" data-i18n="fm.phone">Τηλέφωνο</label><input id="fp" name="phone" type="tel" required autocomplete="tel" data-i18n-ph="fm.phonePh" placeholder="69… ή 22890…"></p>
+          </div>
+          <div class="frow">
+            <p class="f"><label for="fe" data-i18n="fm.mail">Email</label><input id="fe" name="email" type="email" autocomplete="email" data-i18n-ph="fm.mailPh" placeholder="name@email.com"></p>
+            <p class="f"><label for="ft" data-i18n="fm.type">Τύπος έργου</label>
+              <select id="ft" name="type">
+                <option value="" data-i18n="fm.t0">Επιλέξτε…</option>
+                <option data-i18n="fm.t1">Ιδιωτική κατοικία / βίλα</option>
+                <option data-i18n="fm.t2">Ξενοδοχείο / resort</option>
+                <option data-i18n="fm.t3">Ανακαίνιση</option>
+                <option data-i18n="fm.t4">Πισίνα / εξωτερικός χώρος</option>
+                <option data-i18n="fm.t5">Μεταλλική κατασκευή</option>
+                <option data-i18n="fm.t6">Άλλο</option>
+              </select></p>
+          </div>
+          <p class="f"><label for="fm" data-i18n="fm.msg">Το έργο σας</label><textarea id="fm" name="message" rows="4" data-i18n-ph="fm.msgPh" placeholder="Ποσότητες, διατομές ή επικολλήστε τη λίστα υλικών…"></textarea></p>
+          <p class="btn-row" style="margin-top:.5rem"><button class="btn" type="submit"><span data-i18n="fm.send">Αποστολή αιτήματος</span><svg class="arw" width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M1 5h12M9 1l4 4-4 4"/></svg></button></p>
+          <p class="fnote" data-i18n="fm.note">Τα στοιχεία σας χρησιμοποιούνται αποκλειστικά για να απαντήσουμε στο αίτημά σας.</p>
+          <p class="fok" data-i18n="fm.ok">Ευχαριστούμε. Λάβαμε το αίτημά σας και θα επικοινωνήσουμε εντός 24 ωρών.</p>
+        </form>
+      </div>
+    </div>
+
+    <p class="dirs rv" data-i18n="con.dirtext">Η μάντρα βρίσκεται στην Αργύραινα, πάνω στον κεντρικό δρόμο που συνδέει τη Χώρα της Μυκόνου με την Άνω Μερά, λίγα λεπτά από τον κόμβο του αεροδρομίου. Υπάρχει χώρος για φόρτωση με φορτηγό.</p>
+    <iframe class="map rv" title="DANTOS — Αργύραινα, Μύκονος" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+
+</main>
+
+<footer class="ftr">
+  <div class="shell">
+    <div class="ftr__t">
+      <div>
+        <a class="brand" href="#top" style="justify-items:start;text-align:left"><b>Dantos</b></a>
+        <p class="mute" style="margin-top:1rem;font-size:.875rem;max-width:26rem" data-i18n="ftr.about">Εμπόριο σιδήρου, οικοδομικών υλικών και μεταλλικών κατασκευών στη Μύκονο. Απόθεμα στο νησί, παράδοση στο εργοτάξιο.</p>
+      </div>
+      <div>
+        <h4 data-i18n="ftr.nav">Πλοήγηση</h4>
+        <ul>
+          <li><a href="#etaireia" data-i18n="nav.about">Η εταιρεία</a></li>
+          <li><a href="#ypiresies" data-i18n="nav.svc">Υπηρεσίες</a></li>
+          <li><a href="#proionta" data-i18n="nav.prod">Προϊόντα</a></li>
+          <li><a href="#erga" data-i18n="nav.sect">Έργα</a></li>
+          <li><a href="#erotiseis" data-i18n="nav.faq">Ερωτήσεις</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="ftr.contact">Επικοινωνία</h4>
+        <ul>
+          <li><a data-cfg-href="telHref" href="#" data-cfg="tel"></a></li>
+          <li><a data-cfg-href="mobHref" href="#" data-cfg="mob"></a></li>
+          <li><a data-cfg-href="mailHref" href="#" data-cfg="mail"></a></li>
+          <li><span data-cfg="addr"></span></li>
+          <li><span data-cfg="hours"></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr__b">
+      <span>© <span data-cfg="year"></span> <span data-cfg="legal"></span></span>
+      <span><a href="https://advonmedia.com" target="_blank" rel="noopener">Designed by Advon Media</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" data-cfg-href="telHref" href="#">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+  <span data-i18n="fab">Καλέστε μας</span>
+</a>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Προβολή εικόνας">
+  <button class="lb__x" type="button" aria-label="Κλείσιμο">✕</button>
+  <button class="lb__p" type="button" aria-label="Προηγούμενη">‹</button>
+  <button class="lb__n" type="button" aria-label="Επόμενη">›</button>
+  <figure><img id="lbimg" src="" alt=""><figcaption class="lb__cap" id="lbcap"></figcaption></figure>
+</div>
+
+<script>
+(function(){"use strict";
+
+/* ============================================================
+   ΣΤΟΙΧΕΙΑ ΕΠΙΧΕΙΡΗΣΗΣ — ΕΔΩ ΤΑ ΑΛΛΑΖΕΙΣ ΟΛΑ
+   TODO = προς επιβεβαίωση από τον πελάτη
+   ============================================================ */
+var CFG = {
+  legal:    "ΝΙΚΟΛΑΟΣ Α. ΔΑΝΤΟΣ",        /* πηγή: 11888.gr */
+  brand:    "DANTOS",
+  tel:      "+30 22890 79723",           /* πηγή: 11888.gr — επιβεβαιωμένο */
+  telHref:  "+302289079723",
+  mob:      "+30 694 633 7200",          /* TODO επιβεβαίωσε */
+  mobHref:  "+306946337200",
+  mail:     "info@dantos.gr",            /* TODO PLACEHOLDER */
+  streetEl: "Αργύραινα", streetEn: "Argyraina",   /* TODO ακριβής διεύθυνση */
+  cityEl:   "Μύκονος",   cityEn:   "Mykonos",
+  regEl:    "Κυκλάδες",  regEn:    "Cyclades",
+  postal:   "84600", country: "GR",
+  lat: 37.4467, lng: 25.3289,            /* TODO ακριβές σημείο μάντρας */
+  hoursEl:  "Δευ – Παρ 07:30 – 17:00 · Σάβ 08:00 – 14:00",   /* TODO */
+  hoursEn:  "Mon – Fri 07:30 – 17:00 · Sat 08:00 – 14:00",
+  hoursSpec:[{d:["Monday","Tuesday","Wednesday","Thursday","Friday"],o:"07:30",c:"17:00"},
+             {d:["Saturday"],o:"08:00",c:"14:00"}],
+  founded:  "1998", foundedConfirmed:false,   /* TODO PLACEHOLDER — βάλε foundedConfirmed:true όταν το επιβεβαιώσει */
+  vat:"", gemi:"", facebook:"", instagram:"",
+  domain:   "",                          /* κενό = PREVIEW state. Βάλε "https://dantos.gr" στο go-live */
+  formEndpoint: "",                      /* κενό = mailto. Ή Formspree endpoint */
+  /* Φωτογραφίες: βάλε τα αρχεία στο assets/ και συμπλήρωσε εδώ.
+     Άδειο = η ενότητα gallery κρύβεται αυτόματα. */
+  gallery: []  /* π.χ. {src:"assets/dantos-mantra-mykonos.jpg", w:1600, h:1200, alt:"Η μάντρα της DANTOS στην Αργύραινα Μυκόνου"} */
+};
+
+/* ============================================================
+   ENGLISH DICTIONARY — τα ελληνικά διαβάζονται από το HTML
+   ============================================================ */
+var EN = {
+"meta.title":"Steel & Building Materials Mykonos | DANTOS Merchant",
+"meta.desc":"Steel merchant in Mykonos. B500C rebar, mesh, hollow sections, cement and metal fabrication. Stock held on the island and delivered to your site.",
+"nav.about":"Company","nav.svc":"Services","nav.prod":"Products","nav.sect":"Projects","nav.faq":"FAQ","nav.contact":"Contact",
+"brand.sub":"Steel &amp; Building Materials · Mykonos",
+"hero.eyebrow":"Steel &amp; building materials merchant","hero.loc":"Argyraina · Mykonos · Cyclades",
+"hero.h1":"Steel &amp; building materials <em>in Mykonos</em>",
+"hero.lead":"From rebar and reinforcement mesh to the finished metalwork. We hold stock on the island, quote in writing within 24 hours and deliver to your site — so your project never waits for the next ferry.",
+"hero.cta1":"Request a quote","hero.cta2":"Call us",
+"hero.f1n":"B500C","hero.f1l":"Certified steel","hero.f2n":"24h","hero.f2l":"Written quotation","hero.f3n":"Ø8–Ø25","hero.f3l":"Diameters in stock",
+"chip1":"Stock held in Mykonos","chip2":"Mill certificates","chip3":"Cutting &amp; bending","chip4":"Delivery to site","chip5":"Price locked per project","chip6":"Open all year round","chip7":"Difficult-access delivery",
+"about.eyebrow":"01 — The company","about.h2":"A steel merchant in Mykonos, with <em>stock</em> on the island",
+"about.p1":"DANTOS is a family-run steel and building materials merchant based in Mykonos. We supply contractors, civil engineers, architects, hotel groups and private clients across the island.",
+"about.p2":"On an island where every order comes by ferry, what already sits here is what counts. We keep permanent stock of the everyday materials — rebar, reinforcement mesh, hollow sections, sheet metal, cement and insulation — so the site does not stand still.",
+"about.p3":"We work with certified steel, issue a written quotation with a clear take-off, and deliver where you are building. No surprises on price and no gaps in the programme.",
+"svc.eyebrow":"02 — Services","svc.h2":"Four disciplines, <em>one</em> point of contact",
+"svc.lead":"Everything a site needs in steel and building materials from a single source: one quotation, one delivery, one responsibility.",
+"svc1.h3":"Reinforcement steel — B500C rebar",
+"svc1.p":"Reinforcement steel is the one material that tolerates no compromise: if the grade is not what was declared, the problem surfaces years later. We trade exclusively in certified B500C steel, in diameters from Ø8 to Ø25, in straight bars and in coil. We cut and bend stirrups, links and special shapes to your engineer's bar bending schedule, so the crew does not lose hours cutting on site. We hold permanent stock in Mykonos across every common diameter and in reinforcement mesh from T131 to T500. Every batch is delivered with the mill certificates and a delivery note stating grade and quantity clearly.",
+"svc1.s1":"Ø8 – Ø25","svc1.s2":"Mesh T131 – T500","svc1.s3":"Cutting &amp; bending","svc1.s4":"Batch certificates",
+"svc2.h3":"Building &amp; construction materials",
+"svc2.p":"A site in Mykonos usually stops not because of the big items but because of the small ones: the cement that ran out, the adhesive that missed the ferry, the insulation still sitting in Piraeus. That is why we keep steady stock of the essentials on the island: cement in bags and on pallets, lime, ready-mixed mortars and renders, tile adhesives, screeds, bricks, concrete blocks and plasterboard. For thermal insulation we carry XPS, EPS and rock wool, and for waterproofing bitumen membranes and liquid systems suited to the Cycladic marine environment. We round it off with the consumables a crew asks for daily: cutting discs, electrodes, tying wire and spacers.",
+"svc2.s1":"Cement &amp; mortars","svc2.s2":"Bricks &amp; blocks","svc2.s3":"Thermal insulation","svc2.s4":"Waterproofing",
+"svc3.h3":"Metal fabrication",
+"svc3.p":"Beyond trading, we also build. We design and fabricate steel frames, columns and beams for extensions and covered outdoor areas, along with railings, handrails, gates, fencing, pergolas and canopies. In Mykonos the choice of material is critical: salt and the north wind eat away anything that has not been protected properly. We work with hot-dip galvanised profiles and with AISI 316 stainless steel wherever the structure faces the sea, powder-coated in the shade of your choice. We measure on site, send a drawing before fabrication begins, and install with our own crew.",
+"svc3.s1":"Steel frames","svc3.s2":"Railings &amp; handrails","svc3.s3":"Pergolas &amp; canopies","svc3.s4":"AISI 316 &amp; galvanised",
+"svc4.h3":"Transport &amp; island delivery",
+"svc4.p":"On an island, delivery is part of the product. We run our own vehicles and loading equipment and deliver across Mykonos — Chora, Ano Mera, Ornos, Platys Gialos, Elia, Kalafatis, Agios Stefanos, Tourlos — as well as to locations with difficult access where a large truck simply cannot pass. We coordinate our own inbound loads with the ferry schedule so that materials we do not hold in stock arrive on the date the contractor planned for, rather than whenever space happens to open up. Deliveries are booked for a specific day and time, offloaded at the point you specify.",
+"svc4.s1":"Our own vehicles","svc4.s2":"Offloading on site","svc4.s3":"Scheduled deliveries","svc4.s4":"Coordinated with the ferry",
+"faq.inline":"What we get asked most",
+"faq1.q":"Do you hold stock in Mykonos?",
+"faq1.a":"Yes. We keep permanent stock on the island of the materials in daily demand: B500C rebar in every common diameter, reinforcement mesh, hollow sections, sheet metal, cement and insulation. So you are not waiting for the next ferry for the basics. For special sections or large quantities we order in and give you a firm delivery date from the outset.",
+"faq2.q":"How quickly do you quote?",
+"faq2.a":"Within 24 hours of receiving your materials list or drawings. The quotation is written and itemised: quantities, grades, unit prices and delivery cost, with no hidden charges. If a take-off from drawings is required it can take a little longer, and we tell you that at the first contact rather than later.",
+"faq3.q":"Do you deliver to site?",
+"faq3.a":"Yes, with our own vehicles, anywhere in Mykonos. We book a specific day and time and offload at the point you specify. We also serve settlements with difficult access, where a large truck cannot pass, using a suitable vehicle. The transport charge is always shown as a separate line on the quotation.",
+"prod.eyebrow":"03 — Products","prod.h2":"Reinforcement mesh &amp; merchant steel, <em>in stock</em>",
+"prod.lead":"An indicative catalogue. For sections, grades or quantities outside this list, just ask — most of them arrive on the next sailing.",
+"prod.g1":"Reinforcement steel","prod.g1a":"B500C rebar","prod.g1as":"Ø8 · Ø10 · Ø12 · Ø14 · Ø16 · Ø20 · Ø25",
+"prod.g1b":"Reinforcement mesh","prod.g1bs":"T131 · T188 · T196 · T257 · T500",
+"prod.g1c":"Coiled steel","prod.g1cs":"Ø8 – Ø14","prod.g1d":"Ties &amp; spacers","prod.g1ds":"Plastic · steel",
+"prod.g2":"Merchant steel","prod.g2a":"Hollow sections","prod.g2as":"20×20 to 200×100 mm",
+"prod.g2b":"Sheet metal","prod.g2bs":"Plain · chequer · galvanised",
+"prod.g2c":"Angles, flats, formed profiles","prod.g2cs":"Full range",
+"prod.g2d":"IPE / HEA / UPN beams","prod.g2ds":"To order","prod.g2e":"Tubes","prod.g2es":"Black · galvanised",
+"prod.g3":"Building &amp; insulation","prod.g3a":"Cement","prod.g3as":"25 kg bag · pallet",
+"prod.g3b":"Ready-mixed mortars","prod.g3bs":"Renders · adhesives · screeds",
+"prod.g3c":"Thermal insulation","prod.g3cs":"XPS · EPS · rock wool",
+"prod.g3d":"Waterproofing","prod.g3ds":"Bitumen membranes · liquid systems",
+"prod.g4":"Stainless &amp; specials","prod.g4a":"Stainless steel","prod.g4as":"AISI 304 · 316 (marine)",
+"prod.g4b":"Galvanised profiles","prod.g4bs":"Hot-dip galvanised",
+"prod.g4c":"Wire mesh &amp; fencing","prod.g4cs":"Roll · panel",
+"prod.g4d":"Electrodes &amp; consumables","prod.g4ds":"Welding · cutting",
+"sect.eyebrow":"04 — Projects","sect.h2":"Villas, hotels and renovations <em>across the island</em>",
+"sect1.t":"Private villas","sect1.d":"Luxury residences with demanding detailing and a hard handover date before the season.",
+"sect2.t":"Hotels &amp; resorts","sect2.d":"Large volumes, phased deliveries and coordination across several trades at once.",
+"sect3.t":"Pools &amp; outdoor areas","sect3.d":"Shell reinforcement, metal elements and structures built to survive a marine environment.",
+"sect4.t":"Renovations","sect4.d":"Small and medium quantities, fast service and delivery inside the old town.",
+"sect5.t":"Civil &amp; public works","sect5.d":"Certified materials with full traceability and the paperwork the project requires.",
+"sect6.t":"Commercial spaces","sect6.d":"Retail, restaurants and beach clubs — from the frame to the final finish.",
+"proc.eyebrow":"05 — Process","proc.h2":"A materials quote in <em>five steps</em>",
+"proc1.t":"Take-off","proc1.d":"Send drawings or a materials list. If it helps, we come to the site.",
+"proc2.t":"Written quotation","proc2.d":"An itemised quote with quantities, grades and prices, within 24 hours.",
+"proc3.t":"Stock reserved","proc3.d":"Material is reserved in your name and the price is locked for the project.",
+"proc4.t":"Delivery","proc4.d":"Delivered to site, on the day and time agreed in advance.",
+"proc5.t":"Support","proc5.d":"Top-up orders, technical clarifications and certificates whenever you need them.",
+"gal.eyebrow":"06 — The yard","gal.h2":"Our premises and materials",
+"faq.eyebrow":"07 — Frequently asked","faq.h2":"What contractors ask <em>before ordering</em>",
+"faq4.q":"Do you provide certificates for the steel?",
+"faq4.a":"Yes. Every batch of B500C steel is delivered with the mill certificates and a delivery note stating grade, diameter and quantity clearly. If your project is public or requires traceability, tell us at the start so we keep the corresponding paperwork on file and hand it over together with the delivery.",
+"faq5.q":"Do you cut and bend reinforcement to order?",
+"faq5.a":"Yes. We cut to length and form stirrups, links and special shapes according to your engineer's bar bending schedule. Send us the schedule or the drawings and we come back with a quotation with the items numbered. The reinforcement then arrives ready at the site and the crew loses no hours cutting on the spot.",
+"faq6.q":"Do you sell to private clients or only to contractors?",
+"faq6.a":"Both. We work daily with contractors, engineers and hotel groups, but we serve private clients doing a renovation or a small job just as readily. There is no minimum order to come to the yard. For small quantities collection is usually the better value, and we say so openly rather than pushing a delivery on you.",
+"faq7.q":"What if I need extra material midway through the project?",
+"faq7.a":"It is the norm and we plan for it. The material on your quotation stays reserved in your name and the price is locked for the duration of the project, so a top-up order does not upset your budget. You call, give the quantities, and it goes on the next delivery run.",
+"faq8.q":"Are you open in winter, out of season?",
+"faq8.a":"Yes, all year round. In Mykonos winter is when most of the building actually happens, so that projects are ready before the season. Opening hours can vary out of season, which is why a quick phone call before you drive to the yard saves you a wasted trip.",
+"con.eyebrow":"08 — Contact","con.h2":"Request a quote for <em>your project</em>",
+"con.lead":"Send us your materials list, or simply describe the project. We reply within 24 hours.",
+"con.tel":"Telephone","con.mob":"Mobile","con.mail":"Email","con.addr":"Address","con.dirs":"Get directions →","con.hours":"Opening hours",
+"con.dirtext":"The yard is in Argyraina, on the main road linking Mykonos Town with Ano Mera, a few minutes from the airport junction. There is room to load with a truck.",
+"fm.name":"Full name","fm.namePh":"Your name","fm.phone":"Phone","fm.phonePh":"+30 …",
+"fm.mail":"Email","fm.mailPh":"name@email.com","fm.type":"Project type",
+"fm.t0":"Select…","fm.t1":"Private home / villa","fm.t2":"Hotel / resort","fm.t3":"Renovation",
+"fm.t4":"Pool / outdoor area","fm.t5":"Metal fabrication","fm.t6":"Other",
+"fm.msg":"Your project","fm.msgPh":"Quantities, sections, or paste your materials list…",
+"fm.send":"Send request","fm.note":"Your details are used solely to reply to your enquiry.",
+"fm.ok":"Thank you. We have received your request and will be in touch within 24 hours.",
+"ftr.about":"Steel, building materials and metal fabrication in Mykonos. Stock held on the island, delivered to your site.",
+"ftr.nav":"Navigation","ftr.contact":"Contact","fab":"Call us"
+};
+
+/* ---------- capture the Greek copy already in the HTML ---------- */
+var EL = {};
+document.querySelectorAll("[data-i18n]").forEach(function(el){ EL[el.getAttribute("data-i18n")] = el.innerHTML; });
+document.querySelectorAll("[data-i18n-ph]").forEach(function(el){ EL[el.getAttribute("data-i18n-ph")] = el.getAttribute("placeholder"); });
+EL["meta.title"] = document.title;
+EL["meta.desc"]  = document.querySelector('meta[name="description"]').getAttribute("content");
+
+var DICT = { el: EL, en: EN }, lang = "el";
+
+function store(k,v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v);}catch(e){ return null; } }
+(function(){
+  var q = new URLSearchParams(location.search).get("lang");
+  var pick = q || store("dantos.lang") || ((navigator.language||"el").slice(0,2).toLowerCase()==="el" ? "el" : "en");
+  lang = (pick==="en") ? "en" : "el";
+})();
+function t(k){ var d=DICT[lang]||{}; return Object.prototype.hasOwnProperty.call(d,k) ? d[k] : (EL[k]!==undefined?EL[k]:k); }
+function decode(s){ var ta=document.createElement("textarea"); ta.innerHTML=s; return ta.value; }
+
+/* ---------- business data into the DOM ---------- */
+function addr(){ return lang==="el"
+  ? CFG.streetEl+", "+CFG.cityEl+" "+CFG.postal+", "+CFG.regEl
+  : CFG.streetEn+", "+CFG.cityEn+" "+CFG.postal+", "+CFG.regEn; }
+function cfg(name){
+  switch(name){
+    case "tel": return CFG.tel;      case "telHref": return "tel:"+CFG.telHref;
+    case "mob": return CFG.mob;      case "mobHref": return "tel:"+CFG.mobHref;
+    case "mail": return CFG.mail;    case "mailHref": return "mailto:"+CFG.mail;
+    case "addr": return addr();      case "hours": return lang==="el"?CFG.hoursEl:CFG.hoursEn;
+    case "legal": return CFG.legal;  case "brand": return CFG.brand;
+    case "year": return String(new Date().getFullYear());
+    case "maps": return "https://www.google.com/maps/search/?api=1&query="+CFG.lat+","+CFG.lng;
+    default: return "";
+  }
+}
+function applyCfg(){
+  document.querySelectorAll("[data-cfg]").forEach(function(el){ el.textContent = cfg(el.getAttribute("data-cfg")); });
+  document.querySelectorAll("[data-cfg-href]").forEach(function(el){ el.setAttribute("href", cfg(el.getAttribute("data-cfg-href"))); });
+}
+
+/* ---------- i18n ---------- */
+function apply(){
+  document.documentElement.setAttribute("lang", lang);
+  document.querySelectorAll("[data-i18n]").forEach(function(el){ el.innerHTML = t(el.getAttribute("data-i18n")); });
+  document.querySelectorAll("[data-i18n-ph]").forEach(function(el){ el.setAttribute("placeholder", decode(t(el.getAttribute("data-i18n-ph")))); });
+  document.title = decode(t("meta.title"));
+  document.querySelector('meta[name="description"]').setAttribute("content", decode(t("meta.desc")));
+  var ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute("content", decode(t("meta.title")));
+  var ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute("content", decode(t("meta.desc")));
+  var ogl=document.querySelector('meta[property="og:locale"]'); if(ogl) ogl.setAttribute("content", lang==="el"?"el_GR":"en_GB");
+  document.querySelectorAll(".lang button").forEach(function(b){ b.setAttribute("aria-pressed", String(b.dataset.lang===lang)); });
+  applyCfg();
+  faqSchema();
+}
+function setLang(next){ if(next===lang||(next!=="el"&&next!=="en")) return; lang=next; store("dantos.lang",lang); apply(); }
+
+/* ---------- structured data ---------- */
+function ld(id,obj){
+  var s=document.getElementById(id);
+  if(!s){ s=document.createElement("script"); s.type="application/ld+json"; s.id=id; document.head.appendChild(s); }
+  s.textContent=JSON.stringify(obj);
+}
+function bizSchema(){
+  var o={
+    "@context":"https://schema.org","@type":"HardwareStore",
+    "name":CFG.brand,"legalName":CFG.legal,"alternateName":"ΔΑΝΤΟΣ",
+    "description":decode(EN["meta.desc"]),
+    "telephone":CFG.tel,"email":CFG.mail,
+    "priceRange":"$$","currenciesAccepted":"EUR","paymentAccepted":"Cash, Bank transfer",
+    "image":"assets/og.svg","logo":"assets/favicon.svg",
+    "address":{"@type":"PostalAddress","streetAddress":CFG.streetEn,"addressLocality":CFG.cityEn,
+               "addressRegion":CFG.regEn,"postalCode":CFG.postal,"addressCountry":CFG.country},
+    "geo":{"@type":"GeoCoordinates","latitude":CFG.lat,"longitude":CFG.lng},
+    "openingHoursSpecification":CFG.hoursSpec.map(function(h){
+      return {"@type":"OpeningHoursSpecification","dayOfWeek":h.d,"opens":h.o,"closes":h.c}; }),
+    "areaServed":["Mykonos","Chora Mykonos","Ano Mera","Ornos","Platys Gialos","Elia","Kalafatis",
+                  "Agios Stefanos","Tourlos","Psarou","Kalo Livadi"].map(function(n){
+      return {"@type":"Place","name":n}; }),
+    "availableLanguage":[{"@type":"Language","name":"Greek"},{"@type":"Language","name":"English"}],
+    "founder":{"@type":"Person","name":CFG.legal},
+    "makesOffer":["Χάλυβας οπλισμού Β500C","Δομικά πλέγματα","Κοιλοδοκοί","Λαμαρίνες","Τσιμέντο",
+                  "Θερμομόνωση","Υγρομόνωση","Μεταλλικές κατασκευές","Παράδοση υλικών στη Μύκονο"]
+      .map(function(n){ return {"@type":"Offer","itemOffered":{"@type":"Product","name":n}}; })
+  };
+  if(CFG.domain) o.url=CFG.domain;
+  if(CFG.foundedConfirmed && CFG.founded) o.foundingDate=CFG.founded;
+  var same=[]; if(CFG.facebook) same.push(CFG.facebook); if(CFG.instagram) same.push(CFG.instagram);
+  if(same.length) o.sameAs=same;
+  if(CFG.vat) o.vatID=CFG.vat;
+  ld("ld-biz",o);
+}
+/* FAQPage built FROM THE VISIBLE DOM → always word-for-word identical */
+function faqSchema(){
+  var qs=[];
+  document.querySelectorAll(".faq details").forEach(function(d){
+    var q=d.querySelector("summary"), a=d.querySelector("p");
+    if(!q||!a) return;
+    qs.push({"@type":"Question","name":q.textContent.trim(),
+             "acceptedAnswer":{"@type":"Answer","text":a.textContent.trim()}});
+  });
+  if(qs.length) ld("ld-faq",{"@context":"https://schema.org","@type":"FAQPage","mainEntity":qs});
+}
+
+/* ---------- gallery + lightbox ---------- */
+var GAL=[];
+function gallery(){
+  var sec=document.getElementById("gallery"), wrap=document.getElementById("gal");
+  if(!sec||!wrap) return;
+  if(!CFG.gallery||!CFG.gallery.length){ sec.hidden=true; return; }
+  sec.hidden=false; GAL=CFG.gallery;
+  wrap.innerHTML=GAL.map(function(g,i){
+    return '<button type="button" data-i="'+i+'" aria-label="'+(g.alt||"")+'">'+
+           '<img src="'+g.src+'" alt="'+(g.alt||"")+'" width="'+(g.w||1600)+'" height="'+(g.h||1200)+'" loading="lazy" decoding="async"></button>';
+  }).join("");
+  wrap.querySelectorAll("button").forEach(function(b){
+    b.addEventListener("click",function(){ open(+b.dataset.i); });
+  });
+}
+var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg"), lbcap=document.getElementById("lbcap"), idx=0, lastFocus=null;
+function open(i){ if(!GAL.length) return; idx=i; lastFocus=document.activeElement; show(); lb.classList.add("on"); document.body.style.overflow="hidden"; lb.querySelector(".lb__x").focus(); }
+function show(){ var g=GAL[idx]; lbimg.src=g.src; lbimg.alt=g.alt||""; lbcap.textContent=g.alt||""; }
+function close(){ lb.classList.remove("on"); document.body.style.overflow=""; if(lastFocus) lastFocus.focus(); }
+function step(n){ idx=(idx+n+GAL.length)%GAL.length; show(); }
+if(lb){
+  lb.querySelector(".lb__x").addEventListener("click",close);
+  lb.querySelector(".lb__p").addEventListener("click",function(){step(-1);});
+  lb.querySelector(".lb__n").addEventListener("click",function(){step(1);});
+  lb.addEventListener("click",function(e){ if(e.target===lb) close(); });
+  document.addEventListener("keydown",function(e){
+    if(!lb.classList.contains("on")) return;
+    if(e.key==="Escape") close(); else if(e.key==="ArrowLeft") step(-1); else if(e.key==="ArrowRight") step(1);
+  });
+}
+
+/* ---------- UI ---------- */
+function ui(){
+  var hdr=document.querySelector(".hdr");
+  var onScroll=function(){ hdr.classList.toggle("stuck", window.scrollY>40); };
+  onScroll(); window.addEventListener("scroll",onScroll,{passive:true});
+
+  var burger=document.querySelector(".burger"), x=document.querySelector(".drawer__x");
+  function menu(open){ document.body.classList.toggle("menu",open); burger.setAttribute("aria-expanded",String(open)); if(open) x.focus(); else burger.focus(); }
+  burger.addEventListener("click",function(){ menu(!document.body.classList.contains("menu")); });
+  x.addEventListener("click",function(){ menu(false); });
+  document.querySelectorAll(".drawer a").forEach(function(a){ a.addEventListener("click",function(){ menu(false); }); });
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape"&&document.body.classList.contains("menu")) menu(false); });
+
+  document.querySelectorAll(".lang button").forEach(function(b){
+    b.addEventListener("click",function(){ setLang(b.dataset.lang); });
+  });
+}
+function reveal(){
+  var els=document.querySelectorAll(".rv");
+  if(!("IntersectionObserver" in window)){ els.forEach(function(e){e.classList.add("in");}); return; }
+  var io=new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add("in"); io.unobserve(x.target);} }); },
+    {rootMargin:"0px 0px -8% 0px",threshold:.06});
+  els.forEach(function(e){ io.observe(e); });
+}
+function form(){
+  var f=document.getElementById("qform"); if(!f) return;
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    if(f.querySelector(".hp").value) return;
+    var data=new FormData(f), lines=[];
+    data.forEach(function(v,k){ if(k!=="company") lines.push(k+": "+v); });
+    function mailto(){
+      location.href="mailto:"+CFG.mail+"?subject="+encodeURIComponent(lang==="el"?"Αίτημα προσφοράς — DANTOS":"Quote request — DANTOS")+"&body="+encodeURIComponent(lines.join("\n"));
+    }
+    if(CFG.formEndpoint){
+      fetch(CFG.formEndpoint,{method:"POST",body:data,headers:{Accept:"application/json"}})
+        .then(function(){ f.classList.add("sent"); f.reset(); }).catch(mailto);
+    } else { mailto(); f.classList.add("sent"); }
+  });
+}
+function map(){
+  var m=document.querySelector(".map"); if(!m) return;
+  var d=.018;
+  m.src="https://www.openstreetmap.org/export/embed.html?bbox="+(CFG.lng-d)+"%2C"+(CFG.lat-d)+"%2C"+(CFG.lng+d)+"%2C"+(CFG.lat+d)+"&layer=mapnik&marker="+CFG.lat+"%2C"+CFG.lng;
+}
+
+apply(); ui(); reveal(); form(); map(); gallery(); bizSchema();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PREVIEW STATE: URLs below carry a PLACEHOLDER final domain.
+     Replace REPLACE-WITH-DOMAIN.gr with the real papaki domain at go-live.
+     Never list the agelmet.github.io preview URL here. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://REPLACE-WITH-DOMAIN.gr/</loc>
+    <xhtml:link rel="alternate" hreflang="el" href="https://REPLACE-WITH-DOMAIN.gr/?lang=el"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://REPLACE-WITH-DOMAIN.gr/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://REPLACE-WITH-DOMAIN.gr/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
