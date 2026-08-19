@@ -83,7 +83,8 @@ h1,h2,h3,h4{font-family:var(--ff-d);font-weight:300;line-height:1.07;letter-spac
 .eyebrow{font-size:.6875rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
   color:var(--accent-2);display:flex;align-items:center;gap:.8rem}
 .eyebrow::before{content:"";width:2.25rem;height:1px;background:var(--accent);flex:none;
-  transform-origin:left;transform:scaleX(0);transition:transform .9s var(--e-out) .1s}
+  transform-origin:left;transition:transform .9s var(--e-out) .1s}
+.js .rv:not(.in) .eyebrow::before,.js .head:not(.in) .eyebrow::before{transform:scaleX(0)}
 .in .eyebrow::before,.eyebrow.in::before{transform:scaleX(1)}
 .lead{font-size:clamp(1.05rem,.55vw + .95rem,1.3rem);line-height:1.7;color:var(--ink-2)}
 .mute{color:var(--ink-2)}
@@ -91,14 +92,16 @@ h1,h2,h3,h4{font-family:var(--ff-d);font-weight:300;line-height:1.07;letter-spac
 
 /* ═══ 2. MOTION PRIMITIVES ═════════════════════════════════════════════ */
 /* fade / rise */
-.rv{opacity:0;transform:translateY(2rem);transition:opacity 1s var(--e-out),transform 1s var(--e-out)}
+.rv{transition:opacity 1s var(--e-out),transform 1s var(--e-out)}
+.js .rv{opacity:0;transform:translateY(2rem)}
 .rv.in{opacity:1;transform:none}
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
 .d4{transition-delay:.32s}.d5{transition-delay:.4s}
 
 /* line-mask heading reveal */
 .ln{display:block;overflow:hidden}
-.ln>span{display:block;transform:translateY(110%);transition:transform 1.15s var(--e-out)}
+.ln>span{display:block;transition:transform 1.15s var(--e-out)}
+.js .ln>span{transform:translateY(110%)}
 .in .ln>span{transform:none}
 .in .ln:nth-child(2)>span{transition-delay:.1s}
 .in .ln:nth-child(3)>span{transition-delay:.2s}
@@ -117,7 +120,8 @@ h1,h2,h3,h4{font-family:var(--ff-d);font-weight:300;line-height:1.07;letter-spac
 @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
 /* ═══ 3. INTRO ═════════════════════════════════════════════════════════ */
-.intro{position:fixed;inset:0;z-index:200;background:var(--bg);display:grid;place-items:center;
+.intro{display:none}
+.js .intro{position:fixed;inset:0;z-index:200;background:var(--bg);display:grid;place-items:center;
   transition:opacity .7s var(--e) .35s,visibility .7s .35s}
 body.ready .intro{opacity:0;visibility:hidden}
 .intro__mark{font-family:var(--ff-d);font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:.42em;
@@ -187,10 +191,12 @@ body.menu .drawer a:nth-child(6){transition-delay:.3s}body.menu .drawer a:nth-ch
 /* ═══ 5. PHOTO SLOTS ═══════════════════════════════════════════════════ */
 .ph{position:relative;overflow:hidden;background:var(--surface);isolation:isolate}
 .ph::after{content:"";position:absolute;inset:0;z-index:2;background:var(--bg);
-  transform-origin:right;transition:transform 1.25s var(--e-out)}
+  transform:scaleX(0);transform-origin:right;transition:transform 1.25s var(--e-out)}
+.js .ph:not(.in)::after{transform:scaleX(1)}
 .ph.in::after{transform:scaleX(0)}
 .ph img,.ph .art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.ph img{transform:scale(1.16);transition:transform 1.8s var(--e-out),filter 1.8s var(--e-out);filter:saturate(.82)}
+.ph img{transition:transform 1.8s var(--e-out),filter 1.8s var(--e-out);filter:saturate(.82)}
+.js .ph:not(.in) img{transform:scale(1.16)}
 .ph.in img{transform:scale(1)}
 .ph::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(11,12,14,.15) 0%,rgba(11,12,14,0) 35%,rgba(11,12,14,.55) 100%)}
@@ -238,8 +244,8 @@ body.menu .drawer a:nth-child(6){transition-delay:.3s}body.menu .drawer a:nth-ch
 /* ═══ 8. CHIPS ═════════════════════════════════════════════════════════ */
 .chips{display:flex;flex-wrap:wrap;gap:.55rem;padding-block:clamp(2.5rem,5vw,4rem)}
 .chip{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.15rem;border:1px solid var(--line);
-  border-radius:999px;font-size:.75rem;color:var(--ink-2);transition:.45s var(--e-out);
-  opacity:0;transform:translateY(.9rem)}
+  border-radius:999px;font-size:.75rem;color:var(--ink-2);transition:.45s var(--e-out)}
+.js .chips:not(.in) .chip{opacity:0;transform:translateY(.9rem)}
 .chips.in .chip{opacity:1;transform:none}
 .chips.in .chip:nth-child(2){transition-delay:.05s}.chips.in .chip:nth-child(3){transition-delay:.1s}
 .chips.in .chip:nth-child(4){transition-delay:.15s}.chips.in .chip:nth-child(5){transition-delay:.2s}
@@ -334,7 +340,8 @@ body.menu .drawer a:nth-child(6){transition-delay:.3s}body.menu .drawer a:nth-ch
 .steps>li{background:var(--bg);padding:clamp(1.6rem,2.4vw,2.1rem);display:grid;gap:.7rem;align-content:start;
   position:relative;overflow:hidden}
 .steps>li::after{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:var(--accent);
-  transform:scaleX(0);transform-origin:left;transition:transform .8s var(--e-out)}
+  transform-origin:left;transition:transform .8s var(--e-out)}
+.js .steps:not(.in)>li::after{transform:scaleX(0)}
 .steps.in>li::after{transform:scaleX(1)}
 .steps.in>li:nth-child(2)::after{transition-delay:.12s}.steps.in>li:nth-child(3)::after{transition-delay:.24s}
 .steps.in>li:nth-child(4)::after{transition-delay:.36s}.steps.in>li:nth-child(5)::after{transition-delay:.48s}
@@ -500,6 +507,7 @@ address{font-style:normal;display:grid;gap:1.35rem}
 </style>
 </head>
 <body>
+<script>document.documentElement.className+=" js";</script>
 <div class="prog" aria-hidden="true"></div>
 
 <div class="intro" aria-hidden="true">
@@ -1291,8 +1299,10 @@ function faqSchema(){
 apply(); photos(); ui(); form(); map(); gallery(); bizSchema();
 if(RM){document.body.classList.add("ready");reveal();}
 else{
-  window.addEventListener("load",function(){setTimeout(function(){document.body.classList.add("ready");reveal();},260);});
-  setTimeout(function(){if(!document.body.classList.contains("ready")){document.body.classList.add("ready");reveal();}},2600);
+  var booted=false;
+  function boot(){ if(booted)return; booted=true; document.body.classList.add("ready"); reveal(); }
+  window.addEventListener("load",function(){setTimeout(boot,240);});
+  setTimeout(boot,1400);
 }
 })();
 </script>
