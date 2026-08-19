@@ -1300,9 +1300,18 @@ apply(); photos(); ui(); form(); map(); gallery(); bizSchema();
 if(RM){document.body.classList.add("ready");reveal();}
 else{
   var booted=false;
-  function boot(){ if(booted)return; booted=true; document.body.classList.add("ready"); reveal(); }
-  window.addEventListener("load",function(){setTimeout(boot,240);});
-  setTimeout(boot,1400);
+  function boot(){ if(booted)return; booted=true;
+    document.body.classList.add("ready");
+    /* the hero never waits on an observer or a transition — it paints at once */
+    document.querySelectorAll(".hero .rv,.hero .ph,.hero .chips,.hero .head").forEach(function(e){e.classList.add("in");});
+    reveal();
+    /* last-resort failsafe: nothing on this page may stay invisible */
+    setTimeout(function(){document.querySelectorAll(".rv,.ph,.chips,.steps,.head").forEach(function(e){
+      var r=e.getBoundingClientRect();
+      if(r.top<window.innerHeight&&r.bottom>0)e.classList.add("in");});},1200);
+  }
+  window.addEventListener("load",function(){setTimeout(boot,180);});
+  setTimeout(boot,700);
 }
 })();
 </script>
