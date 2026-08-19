@@ -133,7 +133,7 @@ body.ready .intro{opacity:0;visibility:hidden}
   transition:background .5s var(--e),padding .5s var(--e),border-color .5s var(--e)}
 .hdr.stuck{background:rgba(11,12,14,.93);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   padding-block:.7rem;border-bottom-color:var(--line)}
-.hdr__in{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:1.5rem}
+.hdr__in{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:clamp(1.5rem,3vw,3.25rem)}
 .nav{display:flex;align-items:center;gap:clamp(.7rem,1.35vw,1.6rem);min-width:0}
 .nav--r{justify-content:flex-end}
 .nav a{white-space:nowrap;font-size:.6875rem;letter-spacing:.15em;text-transform:uppercase;
